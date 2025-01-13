@@ -22,6 +22,10 @@ public class PlayerInput : MonoBehaviour, GameInput.IGameInputsActions
 
     private Action InteractEvent;
 
+    private Action JumpEvent;
+
+    private Action SprintEvent;
+
     #endregion
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -29,7 +33,6 @@ public class PlayerInput : MonoBehaviour, GameInput.IGameInputsActions
         if (context.performed)
         {
             InteractEvent?.Invoke();
-            Debug.Log("test");
             ActionsForUnputs.Interact.Invoke();
         }
         
@@ -37,12 +40,14 @@ public class PlayerInput : MonoBehaviour, GameInput.IGameInputsActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        JumpEvent?.Invoke();
+        ActionsForUnputs.Jump.Invoke();
     }
 
     public void OnSprint(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        SprintEvent?.Invoke();
+        ActionsForUnputs.Sprint.Invoke();
     }
 
     private void OnEnable()
