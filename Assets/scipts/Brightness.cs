@@ -10,7 +10,12 @@ public class Brightness : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        ActionsForUnputs.Sprint += Bright;
+    }
+
+    private void OnDisable()
+    {
+        ActionsForUnputs.Sprint -= Bright;
     }
 
     void Bright()

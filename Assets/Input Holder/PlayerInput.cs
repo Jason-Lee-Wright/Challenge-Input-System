@@ -40,14 +40,20 @@ public class PlayerInput : MonoBehaviour, GameInput.IGameInputsActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        JumpEvent?.Invoke();
-        ActionsForUnputs.Jump.Invoke();
+        if (context.started)
+        {
+            JumpEvent?.Invoke();
+            ActionsForUnputs.Jump.Invoke();
+        }
     }
 
     public void OnSprint(InputAction.CallbackContext context)
     {
-        SprintEvent?.Invoke();
-        ActionsForUnputs.Sprint.Invoke();
+        if (context.canceled)
+        {
+            SprintEvent?.Invoke();
+            ActionsForUnputs.Sprint.Invoke();
+        }
     }
 
     private void OnEnable()
